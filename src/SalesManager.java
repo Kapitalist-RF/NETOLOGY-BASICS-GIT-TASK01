@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class SalesManager {
     protected int[] sales;
 
@@ -13,5 +15,20 @@ public class SalesManager {
             }
         }
         return max;
+    }
+
+    public int min() {
+        int min = Integer.MAX_VALUE;
+        for (int sale : sales) {
+            if (sale < min) {
+                min = sale;
+            }
+        }
+        return min;
+    }
+
+    public int average() {
+        return (Arrays.stream(sales).sum() - min() - max()) /
+                (sales.length - 2);
     }
 }
